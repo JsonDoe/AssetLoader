@@ -1,4 +1,3 @@
 from .fileSelectorWidgetView import FileSelectorWidgetView
-from .fileSelectorWidgetHandler import FileSelectorWidgetHandler
 from .fileSelectorWidgetModel import FileSelectorWidgetModel
 

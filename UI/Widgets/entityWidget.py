@@ -33,13 +33,13 @@ class EntityWidget(QtWidgets.QFrame):
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
 
         print("selected")
-        """
+
         self.parent().parent().parent().parent().unSelectAll() # TODO adapt 
 
         if (event.button() == QtCore.Qt.LeftButton):
             self.widgetSelected.emit(self)
             self.selected = True
-        """
 
 
-# EntityWidget.widgetSelected = QtCore.Signal(EntityWidget)
+
+EntityWidget.widgetSelected = QtCore.Signal(EntityWidget)

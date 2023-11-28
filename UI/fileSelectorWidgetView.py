@@ -1,15 +1,15 @@
 from typing import Optional
 from PySide6 import QtWidgets, QtGui, QtCore
-from .fileSelectorWidgetHandler import FileSelectorWidgetHandler
+from .fileSelectorWidgetModel import FileSelectorWidgetModel
 from .Widgets.entityWidget import EntityWidget
 
 
 class FileSelectorWidgetView(QtWidgets.QFrame):
 
-    def __init__(self, handler=FileSelectorWidgetHandler):
+    def __init__(self):
         super(FileSelectorWidgetView, self).__init__()
 
-        self.handler = handler
+        self.handler = FileSelectorWidgetModel()
         self.setWindowTitle("this is the beginning ")
         self.initUI()
 
@@ -44,14 +44,19 @@ class FileSelectorWidgetView(QtWidgets.QFrame):
 
         self.setLayout(self.mainLayout)
 
-        
 
     def createEntityWidgets(self, parent:QtWidgets.QVBoxLayout) -> None:
         """create the different entity widgets to the parent layout
 
         :parent: (QtWidgets.QVBoxLayout): parent of the widget
         """
-        for category in self.handler._categories:
+        for category in self.handler.categories:
             parent.addWidget(EntityWidget(category))
+
+    def unSelectAll(self):
+        """unselect all the objects
+        """
+        for i in range(self.listLayout.count()):
+            self.listLayout.itemAt(i).widget().selected = False
 
 
