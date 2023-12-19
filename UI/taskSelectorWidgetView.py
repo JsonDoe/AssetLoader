@@ -65,7 +65,7 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedTask = None
 
     def refresh(self):
-        print(self.handler.selectedTask)
+        print(self.handler.selectedAsset)
         #print(self.handler.assets)
         for obj in reversed(range(self.listLayout.count())):
             # Get the widget of the layout item.

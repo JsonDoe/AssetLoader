@@ -1,19 +1,17 @@
 from typing import Optional
 from PySide6 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
-from .Widgets.assetWidget import AssetWidget
+from .Widgets.publishWidget import PublishWidget
 
 
-class AssetSelectorWidgetView(QtWidgets.QFrame):
+class PublishSelectorWidgetView(QtWidgets.QFrame):
 
     def __init__(self, model:CategorySelectorWidgetModel):
-        super(AssetSelectorWidgetView, self).__init__()
+        super(PublishSelectorWidgetView, self).__init__()
 
         self.handler = model
-        self.setWindowTitle("this is the asset selector")
+        self.setWindowTitle("this is the task selector")
         self.initUI()
-
-    
 
     def initUI(self):
         """creates and organizes the UI
@@ -27,7 +25,7 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
         self.menuLayout         = QtWidgets.QHBoxLayout()
         self.menuLayout.setAlignment(QtCore.Qt.AlignLeft)
 
-        self.titleWidget        = QtWidgets.QLabel("Assets:")
+        self.titleWidget        = QtWidgets.QLabel("Publishes:")
         self.menuLayout.addWidget(self.titleWidget)
 
         self.createEntityWidgets(self.listLayout)
@@ -54,20 +52,20 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
 
         :parent: (QtWidgets.QVBoxLayout): parent of the widget
         """
-        if self.handler.selectedCategory is not None:
-            assets = self.handler.assets
-            for asset in assets:
-                parent.addWidget(AssetWidget(asset))
+        if self.handler.selectedTask is not None:
+            publishes = self.handler.publishedFiles
+            for pub in publishes:
+                parent.addWidget(PublishWidget(pub))
 
     def unSelectAll(self):
         """unselect all the objects
         """
         for i in range(self.listLayout.count()):
             self.listLayout.itemAt(i).widget().selected = False
-        self.handler.selectedAsset = None
+        self.handler.selectedPublish = None
 
     def refresh(self):
-        print(self.handler.selectedCategory)
+        print(self.handler.selectedTask)
         #print(self.handler.assets)
         for obj in reversed(range(self.listLayout.count())):
             # Get the widget of the layout item.

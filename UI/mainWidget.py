@@ -4,6 +4,7 @@ from .categorySelectorWidgetView import CategorySelectorWidgetView
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
 from .assetSelectorWidgetView import AssetSelectorWidgetView
 from .taskSelectorWidgetView import TaskSelectorWidgetView
+from .publishSelectorWidgetView import PublishSelectorWidgetView
 
 
 class MainWidget(QtWidgets.QFrame):
@@ -27,8 +28,11 @@ class MainWidget(QtWidgets.QFrame):
 
         taskSelectorWidget = TaskSelectorWidgetView(self.handler)
 
+        pubSelectorWidget = PublishSelectorWidgetView(self.handler)
+
         self.mainLayout.addWidget(catSelectorWidget)
         self.mainLayout.addWidget(astSelectorWidget)
         self.mainLayout.addWidget(taskSelectorWidget)
+        self.mainLayout.addWidget(pubSelectorWidget)
 
         self.setLayout(self.mainLayout)

@@ -1,16 +1,16 @@
 from typing import Optional
 from PySide6 import QtWidgets, QtCore, QtGui
 import PySide6.QtGui
-from pipelineCore.shotgrid.task import Task
+from pipelineCore.shotgrid.publishedFile import PublishedFile
 
 
-class TaskWidget(QtWidgets.QFrame):
+class PublishWidget(QtWidgets.QFrame):
     """Student Widget
     """
-    def __init__(self, task:Task) -> None:
-        super(TaskWidget, self).__init__()
+    def __init__(self, publish:PublishedFile) -> None:
+        super(PublishWidget, self).__init__()
 
-        self._task = task
+        self._publish = publish
 
         self.selected = False
 
@@ -21,7 +21,7 @@ class TaskWidget(QtWidgets.QFrame):
         """
         self.mainLayout = QtWidgets.QGridLayout()
 
-        self.nameWidget = QtWidgets.QLabel(self._task.name)
+        self.nameWidget = QtWidgets.QLabel(self._publish.name)
 
         self.mainLayout.addWidget(self.nameWidget)
 
@@ -30,7 +30,7 @@ class TaskWidget(QtWidgets.QFrame):
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
 
-        print("selected %s" % self._task)
+        print("selected %s" % self._publish)
 
         # self.parent().parent().parent().parent().unSelectAll() # TODO adapt 
 
@@ -38,9 +38,9 @@ class TaskWidget(QtWidgets.QFrame):
             self.widgetSelected.emit(self)
             self.selected = True
         
-        self.parent().parent().parent().parent().handler.selectedTask = self._task
+        self.parent().parent().parent().parent().handler.selectedPublish = self._publish
 
         # print(self.parent().parent().parent().parent().handler.assets)
 
 
-TaskWidget.widgetSelected = QtCore.Signal(TaskWidget)
+PublishWidget.widgetSelected = QtCore.Signal(PublishWidget)

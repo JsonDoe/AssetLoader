@@ -1,5 +1,7 @@
 from pipelineCore.shotgrid.manager import Manager
 from pipelineCore.shotgrid.asset import Asset
+from pipelineCore.shotgrid.task import Task
+from pipelineCore.shotgrid.publishedFile import PublishedFile
 
 
 class CategorySelectorWidgetModel(object):
@@ -8,13 +10,15 @@ class CategorySelectorWidgetModel(object):
 
         self._manager = Manager()
 
-        self.currentProject = self._manager.getProject("DOLL")
+        self.currentProject = self._manager.getProject("SOUR")
 
         self.selectedCategory = None
 
         self.selectedAsset:Asset = None
 
-        self.selectedTask = None
+        self.selectedTask:Task = None
+
+        self.selectedPublish:PublishedFile = None
 
     @property
     def categories(self):
@@ -29,5 +33,12 @@ class CategorySelectorWidgetModel(object):
     def tasks(self):
         if self.selectedAsset is not None:
             return self.selectedAsset.tasks
+        else:
+            return None
+
+    @property
+    def publishedFiles(self):
+        if self.selectedTask is not None:
+            return self.selectedTask.publishedFiles
         else:
             return None
