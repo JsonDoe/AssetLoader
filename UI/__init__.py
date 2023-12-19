@@ -1,3 +1,4 @@
-from .fileSelectorWidgetView import FileSelectorWidgetView
-from .fileSelectorWidgetModel import FileSelectorWidgetModel
+from .categorySelectorWidgetView import CategorySelectorWidgetView
+from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .assetSelectorWidgetView import AssetSelectorWidgetView
 

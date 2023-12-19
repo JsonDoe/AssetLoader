@@ -1,6 +1,6 @@
 import sys
 from PySide6 import QtWidgets
-from UI.fileSelectorWidgetView import FileSelectorWidgetView
+from UI.mainWidget import MainWidget
 
 def __main__():
     app = QtWidgets.QApplication(sys.argv)
@@ -9,7 +9,7 @@ def __main__():
 
     #V load and apply the application style
 
-    wid = FileSelectorWidgetView()
+    wid = MainWidget()
     
     wid.show()
 

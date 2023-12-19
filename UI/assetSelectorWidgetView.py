@@ -1,0 +1,84 @@
+from typing import Optional
+from PySide6 import QtWidgets, QtGui, QtCore
+from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .Widgets.assetWidget import AssetWidget
+
+
+class AssetSelectorWidgetView(QtWidgets.QFrame):
+
+    def __init__(self, model:CategorySelectorWidgetModel):
+        super(AssetSelectorWidgetView, self).__init__()
+
+        self.handler = model
+        self.setWindowTitle("this is the asset selector")
+        self.initUI()
+
+    
+
+    def initUI(self):
+        """creates and organizes the UI
+        """
+        self.mainLayout = QtWidgets.QVBoxLayout()
+        self.mainLayout.setAlignment(QtCore.Qt.AlignTop)
+        
+        self.listLayout = QtWidgets.QVBoxLayout()
+        self.listLayout.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+
+        self.menuLayout         = QtWidgets.QHBoxLayout()
+        self.menuLayout.setAlignment(QtCore.Qt.AlignLeft)
+
+        self.titleWidget        = QtWidgets.QLabel("Assets:")
+        self.menuLayout.addWidget(self.titleWidget)
+
+        self.createEntityWidgets(self.listLayout)
+
+        self.container = QtWidgets.QFrame()
+        self.container.setLayout(self.listLayout)
+
+        self.scrollArea = QtWidgets.QScrollArea()
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setWidget(self.container)
+
+        self.button = QtWidgets.QPushButton("refresh")
+        self.button.clicked.connect(self._onClickButton)
+
+        self.mainLayout.addLayout(self.menuLayout)
+        self.mainLayout.addWidget(self.scrollArea)
+        self.mainLayout.addWidget(self.button)
+
+        self.setLayout(self.mainLayout)
+
+
+    def createEntityWidgets(self, parent:QtWidgets.QVBoxLayout) -> None:
+        """create the different entity widgets to the parent layout
+
+        :parent: (QtWidgets.QVBoxLayout): parent of the widget
+        """
+        if self.handler.selectedCategory is not None:
+            assets = self.handler.assets
+            for asset in assets:
+                parent.addWidget(AssetWidget(asset))
+
+    def unSelectAll(self):
+        """unselect all the objects
+        """
+        for i in range(self.listLayout.count()):
+            self.listLayout.itemAt(i).widget().selected = False
+        self.handler.selectedAsset = None
+
+    def refresh(self):
+        print(self.handler.selectedAsset)
+        #print(self.handler.assets)
+        for obj in reversed(range(self.listLayout.count())):
+            # Get the widget of the layout item.
+            widget = self.listLayout.itemAt(obj).widget()
+            #delete the widget (by removing parent) 
+            widget.setParent(None)
+        
+        self.createEntityWidgets(self.listLayout)
+
+        print("refreshed")
+
+
+    def _onClickButton(self):
+        self.refresh()
