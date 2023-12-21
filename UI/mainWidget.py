@@ -1,5 +1,5 @@
 from typing import Optional
-from PySide6 import QtWidgets, QtGui, QtCore
+from PySide2 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetView import CategorySelectorWidgetView
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
 from .assetSelectorWidgetView import AssetSelectorWidgetView

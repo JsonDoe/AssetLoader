@@ -1,6 +1,6 @@
 from typing import Optional
-from PySide6 import QtWidgets, QtCore, QtGui
-import PySide6.QtGui
+from PySide2 import QtWidgets, QtCore, QtGui
+import PySide2.QtGui
 from pipelineCore.shotgrid.entity import Entity
 
 

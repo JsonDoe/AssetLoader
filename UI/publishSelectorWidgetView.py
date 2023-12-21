@@ -1,5 +1,5 @@
 from typing import Optional
-from PySide6 import QtWidgets, QtGui, QtCore
+from PySide2 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
 from .Widgets.publishWidget import PublishWidget
 

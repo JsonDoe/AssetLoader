@@ -1,5 +1,5 @@
 import sys
-from PySide6 import QtWidgets
+from PySide2 import QtWidgets
 from UI.mainWidget import MainWidget
 
 def __main__():
@@ -13,6 +13,6 @@ def __main__():
     
     wid.show()
 
-    app.exec()
+    app.exec_()
 
 __main__()

@@ -1,5 +1,5 @@
 from typing import Optional
-from PySide6 import QtWidgets, QtGui, QtCore
+from PySide2 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
 from .Widgets.categoryWidget import CategoryWidget
 
@@ -58,6 +58,4 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
         """
         for i in range(self.listLayout.count()):
             self.listLayout.itemAt(i).widget().selected = False
-            self.handler.selectedCategory = None
-
-
+        self.handler.selectedCategory = None
