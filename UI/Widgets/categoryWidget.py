@@ -43,6 +43,8 @@ class CategoryWidget(QtWidgets.QFrame):
 
         print(self.parent().parent().parent().parent().handler.assets)
 
+        self.parent().parent().parent().parent().assetView.refresh() # TODO adapt 
+
 
 
 CategoryWidget.widgetSelected = QtCore.Signal(CategoryWidget)

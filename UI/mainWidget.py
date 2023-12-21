@@ -21,14 +21,15 @@ class MainWidget(QtWidgets.QFrame):
         """creates and organizes the UI
         """
         self.mainLayout = QtWidgets.QHBoxLayout()
-
-        catSelectorWidget = CategorySelectorWidgetView(self.handler)
-
-        astSelectorWidget = AssetSelectorWidgetView(self.handler)
-
-        taskSelectorWidget = TaskSelectorWidgetView(self.handler)
-
+        
         pubSelectorWidget = PublishSelectorWidgetView(self.handler)
+
+        taskSelectorWidget = TaskSelectorWidgetView(self.handler, pubSelectorWidget)
+
+        astSelectorWidget = AssetSelectorWidgetView(self.handler, taskSelectorWidget)
+        
+        catSelectorWidget = CategorySelectorWidgetView(self.handler, astSelectorWidget)
+        
 
         self.mainLayout.addWidget(catSelectorWidget)
         self.mainLayout.addWidget(astSelectorWidget)

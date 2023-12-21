@@ -1,15 +1,19 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .publishSelectorWidgetView import PublishSelectorWidgetView
 from .Widgets.taskWidget import TaskWidget
 
 
 class TaskSelectorWidgetView(QtWidgets.QFrame):
 
-    def __init__(self, model:CategorySelectorWidgetModel):
+    def __init__(
+            self, model:CategorySelectorWidgetModel,
+            publishView:PublishSelectorWidgetView):
         super(TaskSelectorWidgetView, self).__init__()
 
         self.handler = model
+        self.publishView = publishView
         self.setWindowTitle("this is the task selector")
         self.initUI()
 
@@ -63,6 +67,8 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         for i in range(self.listLayout.count()):
             self.listLayout.itemAt(i).widget().selected = False
         self.handler.selectedTask = None
+        self.handler.selectedPublish = None
+        self.refresh()
 
     def refresh(self):
         print(self.handler.selectedAsset)
@@ -73,6 +79,8 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
             #delete the widget (by removing parent) 
             widget.setParent(None)
         
+        self.publishView.refresh()
+
         self.createEntityWidgets(self.listLayout)
 
         print("refreshed")

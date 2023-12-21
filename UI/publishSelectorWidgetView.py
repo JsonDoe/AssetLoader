@@ -63,6 +63,7 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
         for i in range(self.listLayout.count()):
             self.listLayout.itemAt(i).widget().selected = False
         self.handler.selectedPublish = None
+        self.refresh()
 
     def refresh(self):
         print(self.handler.selectedTask)

@@ -1,14 +1,18 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .taskSelectorWidgetView import TaskSelectorWidgetView
 from .Widgets.assetWidget import AssetWidget
 
 
 class AssetSelectorWidgetView(QtWidgets.QFrame):
 
-    def __init__(self, model:CategorySelectorWidgetModel):
+    def __init__(
+            self, model:CategorySelectorWidgetModel,
+            taskView:TaskSelectorWidgetView):
         super(AssetSelectorWidgetView, self).__init__()
 
+        self.taskView = taskView
         self.handler = model
         self.setWindowTitle("this is the asset selector")
         self.initUI()
@@ -65,6 +69,10 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
         for i in range(self.listLayout.count()):
             self.listLayout.itemAt(i).widget().selected = False
         self.handler.selectedAsset = None
+        self.handler.selectedTask = None
+        self.handler.selectedPublish = None
+
+        self.refresh()
 
     def refresh(self):
         print(self.handler.selectedCategory)
@@ -74,7 +82,9 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
             widget = self.listLayout.itemAt(obj).widget()
             #delete the widget (by removing parent) 
             widget.setParent(None)
-        
+
+        self.taskView.refresh()
+
         self.createEntityWidgets(self.listLayout)
 
         print("refreshed")

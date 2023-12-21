@@ -41,6 +41,8 @@ class AssetWidget(QtWidgets.QFrame):
         
         self.parent().parent().parent().parent().handler.selectedAsset = self._asset
 
+        self.parent().parent().parent().parent().taskView.refresh() 
+
         # print(self.parent().parent().parent().parent().handler.assets)
 
 
