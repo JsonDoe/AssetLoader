@@ -23,6 +23,10 @@ class CategorySelectorWidgetModel(object):
     @property
     def categories(self):
         return self.currentProject.getAssetsCategories()
+    
+    @property
+    def sequences(self):
+        return self.currentProject.sequences
 
     @property
     def assets(self):

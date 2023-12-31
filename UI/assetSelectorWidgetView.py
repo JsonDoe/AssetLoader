@@ -72,7 +72,6 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedTask = None
         self.handler.selectedPublish = None
 
-        self.refresh()
 
     def refresh(self):
         print(self.handler.selectedCategory)

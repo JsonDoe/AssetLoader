@@ -41,8 +41,6 @@ class CategoryWidget(QtWidgets.QFrame):
         
         self.parent().parent().parent().parent().handler.selectedCategory=self._entity
 
-        print(self.parent().parent().parent().parent().handler.assets)
-
         self.parent().parent().parent().parent().assetView.refresh() # TODO adapt 
 
 

@@ -40,6 +40,8 @@ class TaskWidget(QtWidgets.QFrame):
         
         self.parent().parent().parent().parent().handler.selectedTask = self._task
 
+        self.parent().parent().parent().parent().publishView.refresh() 
+
         # print(self.parent().parent().parent().parent().handler.assets)
 
 
