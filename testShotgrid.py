@@ -4,7 +4,6 @@ mng = Manager()
 
 project = mng.getProject("DOLL")
 
-for asset in project.assets:
-    print(asset)
+print(project.shots)
 
 

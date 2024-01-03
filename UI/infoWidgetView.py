@@ -1,36 +1,38 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetModel import CategorySelectorWidgetModel
-from .infoWidgetView import InfoWidgetView
-from .Widgets.publishWidget import PublishWidget
+from .Widgets.categoryWidget import CategoryWidget
 
 
-class PublishSelectorWidgetView(QtWidgets.QFrame):
+class InfoWidgetView(QtWidgets.QFrame):
 
-    def __init__(self, model:CategorySelectorWidgetModel, view):
-        super(PublishSelectorWidgetView, self).__init__()
+    def __init__(
+            self, model:CategorySelectorWidgetModel):
+        super(InfoWidgetView, self).__init__()
 
+        self.init = 0
         self.handler = model
-        self.infoView = view
-        self.setWindowTitle("this is the task selector")
+        self.setWindowTitle("this is the beginning")
         self.initUI()
 
     def initUI(self):
         """creates and organizes the UI
         """
+        self.setMinimumWidth(400)
+
         self.mainLayout = QtWidgets.QVBoxLayout()
         self.mainLayout.setAlignment(QtCore.Qt.AlignTop)
         
         self.listLayout = QtWidgets.QVBoxLayout()
         self.listLayout.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        self.menuLayout         = QtWidgets.QHBoxLayout()
+        self.menuLayout = QtWidgets.QHBoxLayout()
         self.menuLayout.setAlignment(QtCore.Qt.AlignLeft)
 
-        self.titleWidget        = QtWidgets.QLabel("Publishes:")
+        self.titleWidget = QtWidgets.QLabel("Infos:")
         self.menuLayout.addWidget(self.titleWidget)
 
-        self.createEntityWidgets(self.listLayout)
+        self.setupInfoLayout(self.listLayout)
 
         self.container = QtWidgets.QFrame()
         self.container.setLayout(self.listLayout)
@@ -44,37 +46,29 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
 
         self.setLayout(self.mainLayout)
 
-
-    def createEntityWidgets(self, parent:QtWidgets.QVBoxLayout) -> None:
+    def setupInfoLayout(self, parent:QtWidgets.QVBoxLayout) -> None:
         """create the different entity widgets to the parent layout
 
         :parent: (QtWidgets.QVBoxLayout): parent of the widget
         """
-        if self.handler.selectedTask is not None:
-            publishes = self.handler.publishedFiles
-            for pub in publishes:
-                parent.addWidget(PublishWidget(pub))
+        if self.handler.selectedPublish is not None:
+            print(self.handler.selectedPublish.publishedFileType)
+            self.info1 = QtWidgets.QLabel(
+                "File type: %s" % self.handler.selectedPublish.publishType)
+            parent.addWidget(self.info1)
 
-    def unSelectAll(self):
-        """unselect all the objects
-        """
-        for i in range(self.listLayout.count()):
-            self.listLayout.itemAt(i).widget().selected = False
-        self.handler.selectedPublish = None
+            self.info2 = QtWidgets.QLabel(
+                "version number: %s" % str(self.handler.selectedPublish.versionNumber))
+            parent.addWidget(self.info2)
 
+            self.info3 = QtWidgets.QLabel(
+                "path: %s" % self.handler.selectedPublish.path)
+            parent.addWidget(self.info3)
 
     def refresh(self):
-        print(self.handler.selectedTask)
-        #print(self.handler.assets)
         for obj in reversed(range(self.listLayout.count())):
             # Get the widget of the layout item.
             widget = self.listLayout.itemAt(obj).widget()
             #delete the widget (by removing parent) 
             widget.setParent(None)
-        
-        self.createEntityWidgets(self.listLayout)
-
-        print("refreshed")
-
-    def _onClickButton(self):
-        self.refresh()
+        self.setupInfoLayout(self.listLayout)

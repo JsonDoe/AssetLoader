@@ -43,12 +43,8 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setWidget(self.container)
 
-        self.button = QtWidgets.QPushButton("refresh")
-        self.button.clicked.connect(self._onClickButton)
-
         self.mainLayout.addLayout(self.menuLayout)
         self.mainLayout.addWidget(self.scrollArea)
-        self.mainLayout.addWidget(self.button)
 
         self.setLayout(self.mainLayout)
 

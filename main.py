@@ -1,6 +1,6 @@
 import sys
 from PySide2 import QtWidgets
-from UI.mainWidget import MainWidget
+from UI.mainWindow import MainWindow
 
 def __main__():
     app = QtWidgets.QApplication(sys.argv)
@@ -9,7 +9,7 @@ def __main__():
 
     #V load and apply the application style
 
-    wid = MainWidget()
+    wid = MainWindow()
     
     wid.show()
 

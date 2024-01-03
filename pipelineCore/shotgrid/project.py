@@ -124,6 +124,14 @@ class Project(Entity):
         return self._sequences
     
     @property
+    def shots(self):
+        sh_list = []
+        for seq in self.sequences:
+            for shot in seq.shots:
+                sh_list.append(shot)
+        return sh_list
+
+    @property
     def assets(self):
         self._assets = self.getEntities(
             Asset, self._assets, self._assets)

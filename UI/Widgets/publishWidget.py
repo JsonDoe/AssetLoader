@@ -40,7 +40,6 @@ class PublishWidget(QtWidgets.QFrame):
         
         self.parent().parent().parent().parent().handler.selectedPublish = self._publish
 
-        # print(self.parent().parent().parent().parent().handler.assets)
-
+        self.parent().parent().parent().parent().infoView.refresh()
 
 PublishWidget.widgetSelected = QtCore.Signal(PublishWidget)

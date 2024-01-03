@@ -10,7 +10,7 @@ class CategorySelectorWidgetModel(object):
 
         self._manager = Manager()
 
-        self.currentProject = self._manager.getProject("SOUR")
+        self.currentProject = self._manager.getProject("M13D")
 
         self.selectedCategory = None
 
