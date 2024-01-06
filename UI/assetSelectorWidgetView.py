@@ -54,7 +54,12 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
 
         :parent: (QtWidgets.QVBoxLayout): parent of the widget
         """
-        if self.handler.selectedCategory is not None:
+        if self.handler.selectedCategory == "Sequence":
+            shots = self.handler.shots
+            for shot in shots:
+                parent.addWidget(AssetWidget(shot))
+
+        elif self.handler.selectedCategory is not None:
             assets = self.handler.assets
             for asset in assets:
                 parent.addWidget(AssetWidget(asset))

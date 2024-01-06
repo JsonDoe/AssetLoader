@@ -56,6 +56,7 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
         """
         for category in self.handler.categories:
             parent.addWidget(CategoryWidget(category))
+        parent.addWidget(CategoryWidget("Sequence"))
 
     def unSelectAll(self):
         """unselect all the objects

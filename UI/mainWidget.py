@@ -7,6 +7,7 @@ from .taskSelectorWidgetView import TaskSelectorWidgetView
 from .publishSelectorWidgetView import PublishSelectorWidgetView
 from .infoWidgetView import InfoWidgetView
 from pipelineCore.maya import Loader
+from UI.Dialogs import WarningDialog
 
 class MainWidget(QtWidgets.QFrame):
 
@@ -15,6 +16,7 @@ class MainWidget(QtWidgets.QFrame):
 
         self.handler = CategorySelectorWidgetModel()
         self.loader = Loader()
+        self.warDiag = WarningDialog(self)
 
         self.setWindowTitle("this is the main widget")
         self.initUI()
@@ -61,5 +63,11 @@ class MainWidget(QtWidgets.QFrame):
 
     def loadButton(self):
         if self.handler.selectedPublish:
-            self.loader.loadScene(path=self.handler.selectedPublish.path)
-        else: print("Please select a Publish")
+            self.loader.loadAsset(
+                path=self.handler.selectedPublish.path,
+                assetName=self.handler.selectedPublish.name)
+        else: self.warDiag.BasicWarningDIag(
+            title='Error', text='Please select a publish')
+
+    # def onClickButton(self):
+    #     self.warDiag.BasicWarningDIag()

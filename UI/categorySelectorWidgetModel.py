@@ -46,3 +46,7 @@ class CategorySelectorWidgetModel(object):
             return self.selectedTask.publishedFiles
         else:
             return None
+    
+    @property
+    def shots(self):
+        return self.currentProject.shots

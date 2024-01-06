@@ -11,7 +11,8 @@ class PublishedFile(Entity):
         "code",
         "path",
         "published_file_type",
-        "version_number"
+        "version_number",
+        "image"
     ]
 
     def __init__(self, shotgridDict=None, shotgridInstance=None):
@@ -42,6 +43,10 @@ class PublishedFile(Entity):
     def versionNumber(self) -> int:
         return self.sgDict["version_number"]
     
+    @property
+    def thumbnailURL(self):
+        return self.sgDict["image"]
+
     @property
     def path(self): # TODO fix 
         sys = platform.system()

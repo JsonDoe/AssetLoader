@@ -34,7 +34,7 @@ class InfoWidgetView(QtWidgets.QFrame):
 
         self.setupInfoLayout(self.listLayout)
 
-        self.container = QtWidgets.QFrame()
+        self.container = QtWidgets.QWidget()
         self.container.setLayout(self.listLayout)
 
         self.scrollArea = QtWidgets.QScrollArea()
@@ -53,6 +53,10 @@ class InfoWidgetView(QtWidgets.QFrame):
         """
         if self.handler.selectedPublish is not None:
             print(self.handler.selectedPublish.publishedFileType)
+            self.info0 = QtWidgets.QLabel(
+                "File name: %s" % self.handler.selectedPublish.name)
+            parent.addWidget(self.info0)
+
             self.info1 = QtWidgets.QLabel(
                 "File type: %s" % self.handler.selectedPublish.publishType)
             parent.addWidget(self.info1)
@@ -62,8 +66,15 @@ class InfoWidgetView(QtWidgets.QFrame):
             parent.addWidget(self.info2)
 
             self.info3 = QtWidgets.QLabel(
-                "path: %s" % self.handler.selectedPublish.path)
+                "task: %s(%s)" % (
+                    self.handler.selectedTask.name,
+                    self.handler.selectedTask.status))
             parent.addWidget(self.info3)
+
+            self.info4 = QtWidgets.QLabel(
+                "path: %s" % self.handler.selectedPublish.path)
+            parent.addWidget(self.info4)
+
 
     def refresh(self):
         for obj in reversed(range(self.listLayout.count())):

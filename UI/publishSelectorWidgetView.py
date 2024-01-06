@@ -74,6 +74,8 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
         
         self.createEntityWidgets(self.listLayout)
 
+        self.infoView.refresh()
+
         print("refreshed")
 
     def _onClickButton(self):

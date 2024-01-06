@@ -9,7 +9,8 @@ class Task(Entity):
     FIELDS = [
         "type",
         "id",
-        "content"
+        "content",
+        "sg_status_list"
     ]
 
     def __init__(self, shotgridDict=None, shotgridInstance=None):
@@ -46,3 +47,7 @@ class Task(Entity):
         self._publishedFiles = self.getEntities(
             PublishedFile, self._filters, self._publishedFiles)
         return sorted(self._publishedFiles, key=lambda x: x.versionNumber, reverse=True)
+    
+    @property
+    def status(self) -> str:
+        return self.sgDict["sg_status_list"]
