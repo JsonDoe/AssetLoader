@@ -5,7 +5,8 @@ from pipelineCore.shotgrid.publishedFile import PublishedFile
 
 
 class CategorySelectorWidgetModel(object):
-
+    """Class to handle the different datas of the shotgrid entities
+    """
     def __init__(self):
 
         self._manager = Manager()

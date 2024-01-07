@@ -6,7 +6,8 @@ from .Widgets.publishWidget import PublishWidget
 
 
 class PublishSelectorWidgetView(QtWidgets.QFrame):
-
+    """Class to handle the publish selection UI
+    """
     def __init__(self, model:CategorySelectorWidgetModel, view):
         super(PublishSelectorWidgetView, self).__init__()
 
@@ -65,6 +66,8 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
                 parent.addWidget(PublishWidget(pub))
 
     def refreshStyle(self):
+        """refresh the style sheet of the widgets from the list layout
+        """
         for i in range(self.listLayout.count()):
             if self.listLayout.itemAt(i).widget().selected == False:
                 self.listLayout.itemAt(i).widget().setStyleSheet('''
@@ -84,6 +87,8 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
 
 
     def refresh(self):
+        """refresh the diverses widgets from the list
+        """
         print(self.handler.selectedTask)
         #print(self.handler.assets)
         for obj in reversed(range(self.listLayout.count())):

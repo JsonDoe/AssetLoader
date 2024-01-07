@@ -6,7 +6,8 @@ from .Widgets.taskWidget import TaskWidget
 
 
 class TaskSelectorWidgetView(QtWidgets.QFrame):
-
+    """Class to handle the task selection UI
+    """
     def __init__(
             self, model:CategorySelectorWidgetModel,
             publishView:PublishSelectorWidgetView):
@@ -67,6 +68,8 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
                 parent.addWidget(TaskWidget(task))
 
     def refreshStyle(self):
+        """refresh the style sheet of the widgets from the list layout
+        """
         for i in range(self.listLayout.count()):
             if self.listLayout.itemAt(i).widget().selected == False:
                 self.listLayout.itemAt(i).widget().setStyleSheet('''
@@ -86,6 +89,8 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
 
 
     def refresh(self):
+        """refresh the diverses widgets from the list
+        """
         print(self.handler.selectedAsset)
         #print(self.handler.assets)
         for obj in reversed(range(self.listLayout.count())):

@@ -6,7 +6,8 @@ from .Widgets.categoryWidget import CategoryWidget
 
 
 class CategorySelectorWidgetView(QtWidgets.QFrame):
-
+    """Class to handle the category selection UI
+    """
     def __init__(
             self, model:CategorySelectorWidgetModel,
             assetView:AssetSelectorWidgetView):
@@ -65,6 +66,8 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
         parent.addWidget(CategoryWidget("Sequence"))
 
     def refreshStyle(self):
+        """refresh the style sheet of the widgets from the list layout
+        """
         for i in range(self.listLayout.count()):
             if self.listLayout.itemAt(i).widget().selected == False:
                 self.listLayout.itemAt(i).widget().setStyleSheet('''

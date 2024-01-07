@@ -5,7 +5,8 @@ from .Widgets.thumbnail import Thumbnail
 
 
 class InfoWidgetView(QtWidgets.QWidget):
-
+    """Class to handle the info UI
+    """
     def __init__(
             self, model:CategorySelectorWidgetModel):
         super(InfoWidgetView, self).__init__()
@@ -114,6 +115,8 @@ class InfoWidgetView(QtWidgets.QWidget):
             parent.addWidget(self.info4)
 
     def refresh(self):
+        """refresh the diverses widgets from the list
+        """
         for obj in reversed(range(self.listLayout.count())):
             # Get the widget of the layout item.
             widget = self.listLayout.itemAt(obj).widget()

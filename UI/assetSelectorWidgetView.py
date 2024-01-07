@@ -6,7 +6,8 @@ from .Widgets.assetWidget import AssetWidget
 
 
 class AssetSelectorWidgetView(QtWidgets.QFrame):
-
+    """Class to handle the asset selection UI
+    """
     def __init__(
             self, model:CategorySelectorWidgetModel,
             taskView:TaskSelectorWidgetView):
@@ -72,6 +73,8 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
                 parent.addWidget(AssetWidget(asset))
 
     def refreshStyle(self):
+        """refresh the style sheet of the widgets from the list layout
+        """
         for i in range(self.listLayout.count()):
             if self.listLayout.itemAt(i).widget().selected == False:
                 self.listLayout.itemAt(i).widget().setStyleSheet('''
@@ -82,7 +85,7 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
                             ''')
 
     def unSelectAll(self):
-        """unselect all the objects
+        """unselect all the objects and reset selections from the handler
         """
         for i in range(self.listLayout.count()):
             self.listLayout.itemAt(i).widget().selected = False
@@ -92,6 +95,8 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
 
 
     def refresh(self):
+        """refresh the diverses widgets from the list
+        """
         print(self.handler.selectedCategory)
         #print(self.handler.assets)
         for obj in reversed(range(self.listLayout.count())):
