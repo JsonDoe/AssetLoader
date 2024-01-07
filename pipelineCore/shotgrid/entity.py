@@ -27,16 +27,16 @@ class Entity(object):
                     result:list) -> list[object]:
         """send a request to get the entities list.
 
-        :param classType: _description_
+        :param classType: type of the class
         :type classType: object
 
         :param filters: the request filters
         :type filters: list
 
-        :param result: _description_
+        :param result: result of the request
         :type result: list
 
-        :return: _description_
+        :return: result of the request
         :rtype: list[object]
         """
         if len(result) == 0:

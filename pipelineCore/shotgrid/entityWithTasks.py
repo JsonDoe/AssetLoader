@@ -15,11 +15,11 @@ class EntityWithTasks(Entity):
             ]
     
     def getTask(self, taskName:str) -> Task:
-        """_summary_
+        """get a specific task from the task list
 
-        :param taskName: _description_
+        :param taskName: name of the task
         :type taskName: str
-        :return: _description_
+        :return: task object containing various task data
         :rtype: Task
         """
         return self.getEntity(taskName, self.tasks)

@@ -4,7 +4,7 @@ from .categorySelectorWidgetModel import CategorySelectorWidgetModel
 from .Widgets.thumbnail import Thumbnail
 
 
-class InfoWidgetView(QtWidgets.QFrame):
+class InfoWidgetView(QtWidgets.QWidget):
 
     def __init__(
             self, model:CategorySelectorWidgetModel):
@@ -99,7 +99,8 @@ class InfoWidgetView(QtWidgets.QFrame):
             parent.addWidget(self.info1)
 
             self.info2 = QtWidgets.QLabel(
-                "version number: %s" % str(self.handler.selectedPublish.versionNumber))
+                "version number: %s" % str(
+                    self.handler.selectedPublish.versionNumber))
             parent.addWidget(self.info2)
 
             self.info3 = QtWidgets.QLabel(
@@ -111,7 +112,6 @@ class InfoWidgetView(QtWidgets.QFrame):
             self.info4 = QtWidgets.QLabel(
                 "Path: %s" % self.handler.selectedPublish.path)
             parent.addWidget(self.info4)
-
 
     def refresh(self):
         for obj in reversed(range(self.listLayout.count())):

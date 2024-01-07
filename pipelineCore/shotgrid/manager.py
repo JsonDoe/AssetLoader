@@ -1,6 +1,6 @@
 inToolKit = False
 
-#permet de tester si l'on est dans un DCC, if DCC utilise le DDC else utilise par l'API shotgrid
+#checks if we are using a DCC, if DCC use DDC else uses the shotgrid API
 try:
     import  sgtk
     inToolKit = True
@@ -19,7 +19,11 @@ from.project import Project
 
 
 class Manager(object):
+    """Class to handle the different datas from shotgrid.
 
+    :param object: shotgrid manager
+    :type object: object
+    """
     def __init__(self) -> None:
         self.sg = None
 
@@ -56,19 +60,6 @@ class Manager(object):
                     "Project", [], Project.FIELDS)]
             return self._projects
         return self._projects
-    """
-    @property
-    def projectsAlt(self) -> list[Project]:
-        #return sans liste compréhensive
-
-        rtnProjects = []
-
-        for project  in self.sg.find("Project", [], ["name", "id", "sg_type"]):
-            projectObj = Project(shotgridDict=project)
-            rtnProjects.append(projectObj)
-
-        return rtnProjects
-    """ 
 
     @property
     def activeProjects(self) -> list[Project]:
@@ -78,7 +69,13 @@ class Manager(object):
             if project.status == "Active" and project.archived == False]
 
     def getProject(self, name:str) -> Project:
+        """Get a specific project from the project list
 
+        :param name: name of the project
+        :type name: str
+        :return: object containg the various datas from a specific project
+        :rtype: Project
+        """
         for project in self.projects:
             if(project.name == name):
                 return project

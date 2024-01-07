@@ -3,7 +3,14 @@ from .publishedFile import PublishedFile
 
 
 class Task(Entity):
+    """Class to handle a task
 
+    :param Entity: Inherit from a class handling the basic data of an
+    entity with tasks.
+    :type Entity: object
+    :return: Diverses datas of a shotgrid task file
+    :rtype: Object
+    """
     TYPE = "Task"
 
     FIELDS = [

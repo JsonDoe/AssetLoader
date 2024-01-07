@@ -25,7 +25,6 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
             };
             ''')
 
-
     def initUI(self):
         """creates and organizes the UI
         """
@@ -80,7 +79,7 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
         """
         for i in range(self.listLayout.count()):
             self.listLayout.itemAt(i).widget().selected = False
-        self.handler.selectedCategory = None
-        self.handler.selectedAsset = None
-        self.handler.selectedTask = None
-        self.handler.selectedPublish = None
+        self.handler.selectedCategory   = None
+        self.handler.selectedAsset      = None
+        self.handler.selectedTask       = None
+        self.handler.selectedPublish    = None

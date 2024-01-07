@@ -2,7 +2,13 @@ from .entityWithTasks import EntityWithTasks
 
 
 class Asset(EntityWithTasks):
+    """Classe to handle a shotgrid asset
 
+    :param EntityWithTasks: Class to handle a shotgrid entity with task
+    :type EntityWithTasks: object
+    :return: various datas of the shotgrid asset
+    :rtype: object
+    """
     TYPE = "Asset"
 
     FIELDS = [
@@ -34,7 +40,3 @@ class Asset(EntityWithTasks):
     @property
     def category(self) -> str:
         return self.sgDict["sg_asset_type"]
-    
-    # @property
-    # def category(self) -> str:
-    #     return self.sgDict["sg_asset_category"] #TODO verify

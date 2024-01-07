@@ -3,6 +3,8 @@ import PySide2.QtGui
 
 
 class WarningDialog():
+    """Class to handle basic warning dialogs
+    """
     def __init__(self, parent=None) -> None:
         self.parent = parent
 

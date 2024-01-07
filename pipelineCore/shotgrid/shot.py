@@ -2,12 +2,14 @@ from .entityWithTasks import EntityWithTasks
 from .asset import Asset
 
 class Shot(EntityWithTasks):
-    """Class to handle a sequence enity
+    """Class to handle a shot
 
-    :param Entity: _description_
-    :type Entity: _type_
+    :param EntityWithTasks: Inherit from a class handling the basic data of an
+    entity with tasks.
+    :type EntityWithTasks: object
+    :return: Diverses datas of a shotgrid shot file
+    :rtype: Object
     """
-
     TYPE = "Shot"
 
     FIELDS = [

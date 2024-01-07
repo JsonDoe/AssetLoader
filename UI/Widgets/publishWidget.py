@@ -5,7 +5,10 @@ from pipelineCore.shotgrid.publishedFile import PublishedFile
 
 
 class PublishWidget(QtWidgets.QFrame):
-    """Student Widget
+    """class to handle a category widget
+
+    :param QtWidgets: PySde2 Widget
+    :type QtWidgets: object
     """
     def __init__(self, publish:PublishedFile) -> None:
         super(PublishWidget, self).__init__()
@@ -41,7 +44,11 @@ class PublishWidget(QtWidgets.QFrame):
     
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
+        """Define the widget reaction to click event
 
+        :param event: click event
+        :type event: QtGui.QMouseEvent
+        """
         print("selected %s" % self._publish)
 
         self.parent().parent().parent().parent().unSelectAll() # TODO adapt 

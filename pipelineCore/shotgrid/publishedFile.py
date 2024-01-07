@@ -1,8 +1,15 @@
 import platform
 from .entity import Entity
 
-class PublishedFile(Entity):
 
+class PublishedFile(Entity):
+    """Class to handle the published files.
+
+    :param Entity: inherit from a class handling the basic data of an entity
+    :type Entity: object
+    :return: diverses datas
+    :rtype: object
+    """
     TYPE = "PublishedFile"
 
     FIELDS = [
@@ -36,6 +43,7 @@ class PublishedFile(Entity):
     @property
     def publishType(self):
         return self.publishedFileType["name"]
+
     @property
     def pathDict(self) -> dict:
         return self.sgDict["path"]
@@ -51,7 +59,6 @@ class PublishedFile(Entity):
     @property
     def createdAt(self):
         return self.sgDict["created_at"]
-
 
     @property
     def path(self): # TODO fix 

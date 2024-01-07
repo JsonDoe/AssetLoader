@@ -5,7 +5,10 @@ from pipelineCore.shotgrid.task import Task
 
 
 class TaskWidget(QtWidgets.QFrame):
-    """Student Widget
+    """class to handle a task widget
+
+    :param QtWidgets: PySde2 Widget
+    :type QtWidgets: object
     """
     def __init__(self, task:Task) -> None:
         super(TaskWidget, self).__init__()
@@ -41,7 +44,11 @@ class TaskWidget(QtWidgets.QFrame):
     
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
+        """Define the widget reaction to click event
 
+        :param event: click event
+        :type event: QtGui.QMouseEvent
+        """
         print("selected %s" % self._task)
 
         self.parent().parent().parent().parent().unSelectAll() # TODO adapt 

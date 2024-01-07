@@ -4,12 +4,14 @@ from .shot import Shot
 
 
 class Sequence(EntityWithTasks):
-    """Class to handle a sequence enity
+    """Class to handle a sequence entity
 
-    :param Entity: _description_
-    :type Entity: _type_
+    :param EntityWithTasks: Inherit from a class handling the basic data of an
+    entity with tasks.
+    :type EntityWithTasks: object
+    :return: Diverses datas of a shotgrid sequence file
+    :rtype: Object
     """
-
     TYPE = "Sequence"
 
     FIELDS = [

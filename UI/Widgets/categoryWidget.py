@@ -5,7 +5,10 @@ from pipelineCore.shotgrid.entity import Entity
 
 
 class CategoryWidget(QtWidgets.QFrame):
-    """Student Widget
+    """class to handle a category widget
+
+    :param QtWidgets: PySde2 Widget
+    :type QtWidgets: object
     """
     def __init__(self, entity:Entity) -> None:
         super(CategoryWidget, self).__init__()
@@ -44,7 +47,11 @@ class CategoryWidget(QtWidgets.QFrame):
     
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
+        """Define the widget reaction to click event
 
+        :param event: click event
+        :type event: QtGui.QMouseEvent
+        """
         print("selected %s" % self._entity)
 
         self.parent().parent().parent().parent().unSelectAll() # TODO adapt 

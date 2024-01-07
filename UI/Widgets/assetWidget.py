@@ -5,7 +5,7 @@ from pipelineCore.shotgrid.asset import Asset
 
 
 class AssetWidget(QtWidgets.QFrame):
-    """Student Widget
+    """Class to handle asset widgets 
     """
     def __init__(self, asset:Asset) -> None:
         super(AssetWidget, self).__init__()
@@ -42,7 +42,11 @@ class AssetWidget(QtWidgets.QFrame):
     
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
+        """Define the widget reaction to click event
 
+        :param event: click event
+        :type event: QtGui.QMouseEvent
+        """
         print("selected %s" % self._asset)
 
         self.parent().parent().parent().parent().unSelectAll() # TODO adapt 
