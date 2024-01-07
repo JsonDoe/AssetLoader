@@ -1,30 +1,26 @@
 import sys
-import requests
-from PySide2.QtGui     import QPixmap, QScreen
-from PySide2.QtWidgets import QApplication, QWidget, QLabel
-from PySide2 import QtCore
+from PySide2 import QtCore, QtGui, QtWidgets 
 
 
-URL = 'http://openweathermap.org/img/wn/01d@2x.png'
+class Thumbnail(QtWidgets.QWidget):
 
-class App(QWidget):
-
-    def __init__(self):
+    def __init__(self, URL):
         super().__init__()
+        self.URL = URL
         self.initUI()
  
     def initUI(self):
         self.setWindowTitle('getAndSetImageFromURL()')
-        self.label  = QLabel(self)
+        self.label  = QtWidgets.QLabel(self)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.pixmap = QPixmap()
-        self.getAndSetImageFromURL(URL)
+        self.pixmap = QtGui.QPixmap()
+        self.getAndSetImageFromURL(self.URL)
         self.resize(self.pixmap.width(),self.pixmap.height())
-        screenSize = QScreen.availableGeometry(QApplication.primaryScreen())
+        screenSize = QtGui.QScreen.availableGeometry(QtWidgets.QApplication.primaryScreen())
         frmX = (screenSize.width () - self.width ())/2
         frmY = (screenSize.height() - self.height())/2
         self.move(frmX, frmY)
-        self.show() 
+
     
     def getAndSetImageFromURL(self,imageURL):
         request = requests.get(imageURL)
@@ -34,8 +30,3 @@ class App(QWidget):
         self.label.setScaledContents(True)
         #QApplication.processEvents() # uncoment if executed on loop
     
-      
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    gui = App()
-    sys.exit(app.exec_())

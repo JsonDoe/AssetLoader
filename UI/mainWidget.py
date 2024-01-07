@@ -20,6 +20,21 @@ class MainWidget(QtWidgets.QFrame):
 
         self.setWindowTitle("this is the main widget")
         self.initUI()
+        self.setStyleSheet('''
+            QFrame {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }
+                           
+            QPushButton {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            };
+            ''')
 
     def initUI(self):
         """creates and organizes the UI

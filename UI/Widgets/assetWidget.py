@@ -16,6 +16,18 @@ class AssetWidget(QtWidgets.QFrame):
 
         self.initUI()
 
+        self.setStyleSheet('''
+                * ::hover {
+                border-radius: 10px;
+                background-color: rgb(74, 74, 74);
+                font-family: 'Verdana';
+                font-size: 12px;
+                }
+                QLabel {
+                           background-color: transparent;
+                }
+                ''')
+
     def initUI(self):
         """creates and organizes the UI.
         """
@@ -38,8 +50,19 @@ class AssetWidget(QtWidgets.QFrame):
         if (event.button() == QtCore.Qt.LeftButton):
             self.widgetSelected.emit(self)
             self.selected = True
+            self.setStyleSheet('''
+                * {
+                    font-family: 'Verdana';
+                    font-size: 12px;
+                    border-radius: 10px;
+                    background-color: rgb(74, 74, 74);
+                    color :rgb(255, 255, 255)
+                    }
+                ''')
         
         self.parent().parent().parent().parent().handler.selectedAsset = self._asset
+
+        self.parent().parent().parent().parent().refreshStyle()
 
         self.parent().parent().parent().parent().taskView.refresh() 
 

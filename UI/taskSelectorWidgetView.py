@@ -16,6 +16,15 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.publishView = publishView
         self.setWindowTitle("this is the task selector")
         self.initUI()
+        self.setStyleSheet('''
+            QWidget {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            };
+            ''')
+
 
     def initUI(self):
         """creates and organizes the UI
@@ -56,6 +65,16 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
             tasks = self.handler.tasks
             for task in tasks:
                 parent.addWidget(TaskWidget(task))
+
+    def refreshStyle(self):
+        for i in range(self.listLayout.count()):
+            if self.listLayout.itemAt(i).widget().selected == False:
+                self.listLayout.itemAt(i).widget().setStyleSheet('''
+	                        QLabel {
+                                font-family: 'Verdana';
+                                font-size: 12px;
+                            }
+                            ''')
 
     def unSelectAll(self):
         """unselect all the objects

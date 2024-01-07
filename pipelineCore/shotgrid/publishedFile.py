@@ -12,7 +12,8 @@ class PublishedFile(Entity):
         "path",
         "published_file_type",
         "version_number",
-        "image"
+        "image",
+        "created_at"
     ]
 
     def __init__(self, shotgridDict=None, shotgridInstance=None):
@@ -46,6 +47,11 @@ class PublishedFile(Entity):
     @property
     def thumbnailURL(self):
         return self.sgDict["image"]
+
+    @property
+    def createdAt(self):
+        return self.sgDict["created_at"]
+
 
     @property
     def path(self): # TODO fix 

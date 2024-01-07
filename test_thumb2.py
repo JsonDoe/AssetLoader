@@ -56,7 +56,7 @@ class Widget(QWidget):
 
         self.lineedit.setText("http://openweathermap.org/img/wn/01d@2x.png")
 
-        self.resize(640, 480)
+        self.resize(300, 300)
 
     def handle_finished(self, image):
         pixmap = QPixmap.fromImage(image)
