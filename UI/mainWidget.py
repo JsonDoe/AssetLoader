@@ -33,7 +33,28 @@ class MainWidget(QtWidgets.QFrame):
                     font-size: 12px;
                     background-color : rgb(40, 40, 40);
                     color :rgb(255, 255, 255)        
-            };
+            }
+            
+            QMenu {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }
+
+            QAction {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }
+
+            QMessageBox{
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }
             ''')
 
     def initUI(self):
@@ -52,8 +73,8 @@ class MainWidget(QtWidgets.QFrame):
         self.catSelectorWidget = CategorySelectorWidgetView(
             self.handler, self.astSelectorWidget)
 
+        self.createMenu()
         self.createButtons()
-
 
         self.slcLayout.addWidget(self.catSelectorWidget)
         self.slcLayout.addWidget(self.astSelectorWidget)
@@ -72,17 +93,55 @@ class MainWidget(QtWidgets.QFrame):
         self.btnLayout.setAlignment(QtCore.Qt.AlignRight)
 
         self.btnLoad = QtWidgets.QPushButton("Load")
-        self.btnLoad.clicked.connect(self.loadButton)
+        self.btnLoad.setMenu(self.menu)
 
         self.btnLayout.addWidget(self.btnLoad)
 
-    def loadButton(self):
+    def createMenu(self):
+        """create the menu
+        """
+        self.createActions()
+        self.menu = QtWidgets.QMenu("action")
+        self.menu.addAction(self.loadAct)
+        self.menu.addAction(self.loadWithNamespaceAct)
+        self.menu.addAction(self.loadAsRefAct)
+
+
+    def createActions(self):
+        """create QActions for the menu
+        """
+        self.loadAct = QtWidgets.QAction("Load without namespace", self)
+        self.loadAct.triggered.connect(self._loadBase)
+
+        self.loadWithNamespaceAct = QtWidgets.QAction("Load with namespace", self)
+        self.loadWithNamespaceAct.triggered.connect(self._loadWithNamespace)
+
+        self.loadAsRefAct = QtWidgets.QAction("Load as reference", self)
+        self.loadAsRefAct.triggered.connect(self._loadAsReference)
+
+    def _loadBase(self):
         if self.handler.selectedPublish:
             self.loader.loadAsset(
+                path=self.handler.selectedPublish.path)
+        else: self.warDiag.BasicWarningDIag(
+            title='Error', text='Please select a publish')
+    
+    def _loadWithNamespace(self):
+        if self.handler.selectedPublish:
+            self.loader.loadAssetWithNamespace(
                 path=self.handler.selectedPublish.path,
                 assetName=self.handler.selectedPublish.name)
         else: self.warDiag.BasicWarningDIag(
             title='Error', text='Please select a publish')
+        
 
+    def _loadAsReference(self):
+        if self.handler.selectedPublish:
+            self.loader.loadAssetAsReference(
+                path=self.handler.selectedPublish.path,
+                assetName=self.handler.selectedPublish.name)
+        else: self.warDiag.BasicWarningDIag(
+            title='Error', text='Please select a publish')
+    
     # def onClickButton(self):
     #     self.warDiag.BasicWarningDIag()

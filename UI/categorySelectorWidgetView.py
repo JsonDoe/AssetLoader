@@ -86,3 +86,17 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedAsset      = None
         self.handler.selectedTask       = None
         self.handler.selectedPublish    = None
+
+    def refresh(self):
+        """refresh the diverses widgets from the list
+        """
+        print(self.handler.selectedCategory)
+        #print(self.handler.assets)
+        for obj in reversed(range(self.listLayout.count())):
+            # Get the widget of the layout item.
+            widget = self.listLayout.itemAt(obj).widget()
+            #delete the widget (by removing parent) 
+            widget.setParent(None)
+        self.assetView.refresh()
+
+        self.createEntityWidgets(self.listLayout)

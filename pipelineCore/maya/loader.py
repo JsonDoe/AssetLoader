@@ -18,28 +18,19 @@ class Loader(object):
         :param path: path to the file
         :type path: str
         """
-        if mayaContext == 1:
-            if path.endswith(".ma"):
-                cmds.file(path, i=True, ignoreVersion=True, mergeNamespacesOnClash=False, namespace=":")
-            if path.endswith(".abc"):
-                cmds.AbcImport(path, mode='import')
-            else:
-                dlg = QtWidgets.QMessageBox()
-                dlg.setWindowTitle('Error')
-                dlg.setText('Wrong file type selected')
-                dlg.setStandardButtons(
-                    QtWidgets.QMessageBox.Ok)
-                dlg.setIcon(QtWidgets.QMessageBox.Warning)
-                dlg.exec()
-
-        if mayaContext == 0:
-                dlg = QtWidgets.QMessageBox()
-                dlg.setWindowTitle('Error')
-                dlg.setText('Wrong file type selected')
-                dlg.setStandardButtons(
-                    QtWidgets.QMessageBox.Ok)
-                dlg.setIcon(QtWidgets.QMessageBox.Warning)
-                dlg.exec()
+        if path.endswith(".ma"):
+            cmds.file(path, i=True, ignoreVersion=True,
+                      mergeNamespacesOnClash=False, namespace=":")
+        elif path.endswith(".abc"):
+            cmds.AbcImport(path, mode='import')
+        else:
+            dlg = QtWidgets.QMessageBox()
+            dlg.setWindowTitle('Error')
+            dlg.setText('Wrong file type selected')
+            dlg.setStandardButtons(
+                QtWidgets.QMessageBox.Ok)
+            dlg.setIcon(QtWidgets.QMessageBox.Warning)
+            dlg.exec()
     
     def loadAssetWithNamespace(self, path:str, assetName:str) -> None:
         """load an asset in the scene from an .ma or .abc file and place it

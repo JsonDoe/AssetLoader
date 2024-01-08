@@ -7,7 +7,7 @@ class PublishedFile(Entity):
 
     :param Entity: inherit from a class handling the basic data of an entity
     :type Entity: object
-    :return: diverses datas
+    :return: diverses datas of a published file
     :rtype: object
     """
     TYPE = "PublishedFile"
