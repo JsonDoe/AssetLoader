@@ -91,8 +91,6 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
     def refresh(self):
         """refresh the diverses widgets from the list
         """
-        print(self.handler.selectedAsset)
-        #print(self.handler.assets)
         for obj in reversed(range(self.listLayout.count())):
             # Get the widget of the layout item.
             widget = self.listLayout.itemAt(obj).widget()
@@ -102,8 +100,6 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.publishView.refresh()
 
         self.createEntityWidgets(self.listLayout)
-
-        print("refreshed")
 
 
     def _onClickButton(self):

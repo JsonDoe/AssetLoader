@@ -47,9 +47,8 @@ class AssetWidget(QtWidgets.QFrame):
         :param event: click event
         :type event: QtGui.QMouseEvent
         """
-        print("selected %s" % self._asset)
 
-        self.parent().parent().parent().parent().unSelectAll() # TODO adapt 
+        self.parent().parent().parent().parent().unSelectAll()
 
         if (event.button() == QtCore.Qt.LeftButton):
             self.widgetSelected.emit(self)
@@ -69,8 +68,6 @@ class AssetWidget(QtWidgets.QFrame):
         self.parent().parent().parent().parent().refreshStyle()
 
         self.parent().parent().parent().parent().taskView.refresh() 
-
-        # print(self.parent().parent().parent().parent().handler.assets)
 
 
 AssetWidget.widgetSelected = QtCore.Signal(AssetWidget)

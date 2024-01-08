@@ -52,7 +52,6 @@ class CategoryWidget(QtWidgets.QFrame):
         :param event: click event
         :type event: QtGui.QMouseEvent
         """
-        print("selected %s" % self._entity)
 
         self.parent().parent().parent().parent().unSelectAll() # TODO adapt 
 
@@ -74,7 +73,6 @@ class CategoryWidget(QtWidgets.QFrame):
         self.parent().parent().parent().parent().refreshStyle()
 
         self.parent().parent().parent().parent().assetView.refresh() # TODO adapt 
-
 
 
 CategoryWidget.widgetSelected = QtCore.Signal(CategoryWidget)

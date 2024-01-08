@@ -61,7 +61,7 @@ class PublishedFile(Entity):
         return self.sgDict["created_at"]
 
     @property
-    def path(self): # TODO fix 
+    def path(self):
         sys = platform.system()
         if sys == "Windows":
             return self.pathDict["local_path_windows"]

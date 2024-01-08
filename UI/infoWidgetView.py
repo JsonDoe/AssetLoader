@@ -85,7 +85,6 @@ class InfoWidgetView(QtWidgets.QWidget):
         :parent: (QtWidgets.QVBoxLayout): parent of the widget
         """
         if self.handler.selectedPublish is not None:
-            print(self.handler.selectedPublish.publishedFileType)
 
             self.info0 = QtWidgets.QLabel(
                 "File name: %s" % self.handler.selectedPublish.name)

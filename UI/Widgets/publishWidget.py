@@ -49,9 +49,8 @@ class PublishWidget(QtWidgets.QFrame):
         :param event: click event
         :type event: QtGui.QMouseEvent
         """
-        print("selected %s" % self._publish)
 
-        self.parent().parent().parent().parent().unSelectAll() # TODO adapt 
+        self.parent().parent().parent().parent().unSelectAll()
 
         if (event.button() == QtCore.Qt.LeftButton):
             self.widgetSelected.emit(self)
