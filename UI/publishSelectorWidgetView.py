@@ -48,9 +48,19 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
         self.scrollArea = QtWidgets.QScrollArea()
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setWidget(self.container)
+        self.searchbar = QtWidgets.QLineEdit()
+        self.searchbar.textChanged.connect(self.update_display)
+        self.searchbar.setPlaceholderText("Search Publish")
+        self.searchbar.setMaximumHeight(35)
+
+        self.splitter = QtWidgets.QSplitter()
+        self.splitter.setOrientation(QtCore.Qt.Vertical)
+        self.splitter.addWidget(self.scrollArea)
+        self.splitter.addWidget(self.searchbar)
+        self.splitter.setSizes([1, 0])
 
         self.mainLayout.addLayout(self.menuLayout)
-        self.mainLayout.addWidget(self.scrollArea)
+        self.mainLayout.addWidget(self.splitter)
 
         self.setLayout(self.mainLayout)
 
@@ -101,3 +111,11 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
 
     def _onClickButton(self):
         self.refresh()
+
+    def update_display(self, text):
+            for obj in reversed(range(self.listLayout.count())):
+                widget = self.listLayout.itemAt(obj).widget()
+                if text.lower() in widget.nameWidget.text().lower():
+                    widget.show()
+                else:
+                    widget.hide()

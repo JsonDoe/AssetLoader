@@ -50,7 +50,7 @@ class TaskWidget(QtWidgets.QFrame):
         :type event: QtGui.QMouseEvent
         """
 
-        self.parent().parent().parent().parent().unSelectAll()
+        self.parent().parent().parent().parent().parent().unSelectAll()
 
         if (event.button() == QtCore.Qt.LeftButton):
             self.widgetSelected.emit(self)
@@ -65,11 +65,11 @@ class TaskWidget(QtWidgets.QFrame):
                     }
                 ''')
         
-        self.parent().parent().parent().parent().handler.selectedTask = self._task
+        self.parent().parent().parent().parent().parent().handler.selectedTask = self._task
 
-        self.parent().parent().parent().parent().refreshStyle()
+        self.parent().parent().parent().parent().parent().refreshStyle()
 
-        self.parent().parent().parent().parent().publishView.refresh()
+        self.parent().parent().parent().parent().parent().publishView.refresh()
 
 
 TaskWidget.widgetSelected = QtCore.Signal(TaskWidget)

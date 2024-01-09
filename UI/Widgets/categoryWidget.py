@@ -53,7 +53,7 @@ class CategoryWidget(QtWidgets.QFrame):
         :type event: QtGui.QMouseEvent
         """
 
-        self.parent().parent().parent().parent().unSelectAll() # TODO adapt 
+        self.parent().parent().parent().parent().parent().unSelectAll() # TODO adapt 
 
         if (event.button() == QtCore.Qt.LeftButton):
             self.widgetSelected.emit(self)
@@ -68,11 +68,11 @@ class CategoryWidget(QtWidgets.QFrame):
                     }
                 ''')
         
-        self.parent().parent().parent().parent().handler.selectedCategory=self._entity
+        self.parent().parent().parent().parent().parent().handler.selectedCategory=self._entity
 
-        self.parent().parent().parent().parent().refreshStyle()
+        self.parent().parent().parent().parent().parent().refreshStyle()
 
-        self.parent().parent().parent().parent().assetView.refresh() # TODO adapt 
+        self.parent().parent().parent().parent().parent().assetView.refresh() # TODO adapt 
 
 
 CategoryWidget.widgetSelected = QtCore.Signal(CategoryWidget)

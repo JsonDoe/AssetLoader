@@ -50,7 +50,7 @@ class PublishWidget(QtWidgets.QFrame):
         :type event: QtGui.QMouseEvent
         """
 
-        self.parent().parent().parent().parent().unSelectAll()
+        self.parent().parent().parent().parent().parent().unSelectAll()
 
         if (event.button() == QtCore.Qt.LeftButton):
             self.widgetSelected.emit(self)
@@ -65,10 +65,10 @@ class PublishWidget(QtWidgets.QFrame):
                     }
                 ''')
         
-        self.parent().parent().parent().parent().handler.selectedPublish = self._publish
+        self.parent().parent().parent().parent().parent().handler.selectedPublish = self._publish
 
-        self.parent().parent().parent().parent().refreshStyle()
+        self.parent().parent().parent().parent().parent().refreshStyle()
 
-        self.parent().parent().parent().parent().infoView.refresh()
+        self.parent().parent().parent().parent().parent().infoView.refresh()
 
 PublishWidget.widgetSelected = QtCore.Signal(PublishWidget)
