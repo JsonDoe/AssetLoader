@@ -1,7 +1,7 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
 from .selectorWidgetModel import SelectorWidgetModel
-from .Widgets.thumbnail import Thumbnail
+from .Widgets.thumbnailWidget import ThumbnailWidget
 
 
 class InfoWidgetView(QtWidgets.QWidget):
@@ -84,6 +84,10 @@ class InfoWidgetView(QtWidgets.QWidget):
         :parent: (QtWidgets.QVBoxLayout): parent of the widget
         """
         if self.handler.selectedPublish is not None:
+
+            self.thumb = ThumbnailWidget(
+                self.handler.selectedPublish.thumbnailURL)
+            parent.addWidget(self.thumb)
 
             self.info0 = QtWidgets.QLabel(
                 "File name: %s" % self.handler.selectedPublish.name)

@@ -41,6 +41,8 @@ class PublishWidget(QtWidgets.QFrame):
         self.mainLayout.addWidget(self.nameWidget)
 
         self.setLayout(self.mainLayout)
+
+        self.setAcceptDrops(True)
     
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
@@ -52,7 +54,7 @@ class PublishWidget(QtWidgets.QFrame):
 
         self.parent().parent().parent().parent().parent().unSelectAll()
 
-        if (event.button() == QtCore.Qt.LeftButton):
+        if (event.button() == QtCore.Qt.LeftButton or QtCore.Qt.RightButton):
             self.widgetSelected.emit(self)
             self.selected = True
             self.setStyleSheet('''
@@ -70,5 +72,15 @@ class PublishWidget(QtWidgets.QFrame):
         self.parent().parent().parent().parent().parent().refreshStyle()
 
         self.parent().parent().parent().parent().parent().infoView.refresh()
+
+    def mouseMoveEvent(self, e):
+        if e.buttons() == QtCore.Qt.RightButton:
+                drag = QtGui.QDrag(self)
+                mime = QtCore.QMimeData()
+                drag.setMimeData(mime)
+                drag.exec_(QtCore.Qt.MoveAction)
+                print("dragged")
+                self.parent().parent().parent().parent().parent(
+                ).parent().parent().parent()._loadBase()
 
 PublishWidget.widgetSelected = QtCore.Signal(PublishWidget)

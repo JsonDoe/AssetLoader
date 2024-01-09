@@ -1,10 +1,10 @@
 import sys
 from functools import cached_property
 
-from PySide6.QtCore import Signal, QObject, Qt, QUrl
-from PySide6.QtGui import QImage, QPixmap
-from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
-from PySide6.QtWidgets import (
+from PySide2.QtCore import Signal, QObject, Qt, QUrl
+from PySide2.QtGui import QImage, QPixmap
+from PySide2.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
+from PySide2.QtWidgets import (
     QApplication,
     QGridLayout,
     QLabel,
@@ -71,7 +71,7 @@ def main():
     app = QApplication(sys.argv)
     w = Widget()
     w.show()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
