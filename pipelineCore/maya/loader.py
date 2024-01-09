@@ -6,6 +6,7 @@ except:
     mayaContext = 0
     pass
 
+
 class Loader(object):
 
     def __init__(self):
