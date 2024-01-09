@@ -1,6 +1,7 @@
 from .entityWithTasks import EntityWithTasks
 from .asset import Asset
 
+
 class Shot(EntityWithTasks):
     """Class to handle a shot
 

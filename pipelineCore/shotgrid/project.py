@@ -2,6 +2,7 @@ from .entity import Entity
 from .asset import Asset
 from.Sequence import Sequence
 
+
 class Project(Entity):
     """Class to handle a shotgrid project.
 

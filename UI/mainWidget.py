@@ -9,6 +9,7 @@ from .infoWidgetView import InfoWidgetView
 from pipelineCore.maya import Loader
 from UI.Dialogs import WarningDialog
 
+
 class MainWidget(QtWidgets.QFrame):
 
     def __init__(self):
