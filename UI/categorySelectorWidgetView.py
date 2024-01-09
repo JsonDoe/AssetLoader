@@ -1,6 +1,6 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
-from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .selectorWidgetModel import SelectorWidgetModel
 from .assetSelectorWidgetView import AssetSelectorWidgetView
 from .Widgets.categoryWidget import CategoryWidget
 
@@ -9,7 +9,7 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
     """Class to handle the category selection UI
     """
     def __init__(
-            self, model:CategorySelectorWidgetModel,
+            self, model:SelectorWidgetModel,
             assetView:AssetSelectorWidgetView):
         super(CategorySelectorWidgetView, self).__init__()
 
@@ -92,6 +92,8 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
                             ''')
 
     def addCompleter(self):
+        """add QCompleter for the search bar 
+        """
         self.model = QtCore.QStringListModel(self.handler.categoriesList)
         self.completer = QtWidgets.QCompleter(self.model, self)
         self.searchbar.setCompleter(self.completer)

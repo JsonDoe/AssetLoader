@@ -1,6 +1,6 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
-from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .selectorWidgetModel import SelectorWidgetModel
 from .Widgets.thumbnail import Thumbnail
 
 
@@ -8,7 +8,7 @@ class InfoWidgetView(QtWidgets.QWidget):
     """Class to handle the info UI
     """
     def __init__(
-            self, model:CategorySelectorWidgetModel):
+            self, model:SelectorWidgetModel):
         super(InfoWidgetView, self).__init__()
 
         self.init = 0

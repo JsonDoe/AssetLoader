@@ -1,7 +1,7 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
 from .categorySelectorWidgetView import CategorySelectorWidgetView
-from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .selectorWidgetModel import SelectorWidgetModel
 from .assetSelectorWidgetView import AssetSelectorWidgetView
 from .taskSelectorWidgetView import TaskSelectorWidgetView
 from .publishSelectorWidgetView import PublishSelectorWidgetView
@@ -14,7 +14,7 @@ class MainWidget(QtWidgets.QFrame):
     def __init__(self):
         super(MainWidget, self).__init__()
 
-        self.handler = CategorySelectorWidgetModel()
+        self.handler = SelectorWidgetModel()
         self.loader = Loader()
         self.warDiag = WarningDialog(self)
 

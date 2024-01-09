@@ -1,6 +1,6 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
-from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .selectorWidgetModel import SelectorWidgetModel
 from .taskSelectorWidgetView import TaskSelectorWidgetView
 from .Widgets.assetWidget import AssetWidget
 
@@ -9,7 +9,7 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
     """Class to handle the asset selection UI
     """
     def __init__(
-            self, model:CategorySelectorWidgetModel,
+            self, model:SelectorWidgetModel,
             taskView:TaskSelectorWidgetView):
         super(AssetSelectorWidgetView, self).__init__()
 
@@ -108,11 +108,15 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedPublish = None
 
     def addCompleter(self):
+        """add QCompleter for the search bar 
+        """
         self.model = QtCore.QStringListModel(self.handler.assetList)
         self.completer = QtWidgets.QCompleter(self.model, self)
         self.searchbar.setCompleter(self.completer)
 
     def refreshCompleter(self):
+        """refresh the completer based on current datas
+        """
         if self.handler.selectedCategory == "Sequence":
             self.model.setStringList(self.handler.shotList)
         else:

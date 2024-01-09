@@ -1,4 +1,4 @@
 from .categorySelectorWidgetView import CategorySelectorWidgetView
-from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .selectorWidgetModel import SelectorWidgetModel
 from .assetSelectorWidgetView import AssetSelectorWidgetView
 

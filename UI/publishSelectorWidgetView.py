@@ -1,6 +1,6 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
-from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .selectorWidgetModel import SelectorWidgetModel
 from .infoWidgetView import InfoWidgetView
 from .Widgets.publishWidget import PublishWidget
 
@@ -8,7 +8,7 @@ from .Widgets.publishWidget import PublishWidget
 class PublishSelectorWidgetView(QtWidgets.QFrame):
     """Class to handle the publish selection UI
     """
-    def __init__(self, model:CategorySelectorWidgetModel, view):
+    def __init__(self, model:SelectorWidgetModel, view):
         super(PublishSelectorWidgetView, self).__init__()
 
         self.handler = model
@@ -100,11 +100,15 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedPublish = None
 
     def addCompleter(self):
+        """add QCompleter for the search bar 
+        """
         self.model = QtCore.QStringListModel(self.handler.publishList)
         self.completer = QtWidgets.QCompleter(self.model, self)
         self.searchbar.setCompleter(self.completer)
 
     def refreshCompleter(self):
+        """refresh the completer based on current datas
+        """
         self.model.setStringList(self.handler.publishList)
 
     def refresh(self):

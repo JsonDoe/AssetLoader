@@ -1,6 +1,6 @@
 from typing import Optional
 from PySide2 import QtWidgets, QtGui, QtCore
-from .categorySelectorWidgetModel import CategorySelectorWidgetModel
+from .selectorWidgetModel import SelectorWidgetModel
 from .publishSelectorWidgetView import PublishSelectorWidgetView
 from .Widgets.taskWidget import TaskWidget
 
@@ -9,7 +9,7 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
     """Class to handle the task selection UI
     """
     def __init__(
-            self, model:CategorySelectorWidgetModel,
+            self, model:SelectorWidgetModel,
             publishView:PublishSelectorWidgetView):
         super(TaskSelectorWidgetView, self).__init__()
 
@@ -102,11 +102,15 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedPublish = None
 
     def addCompleter(self):
+        """add QCompleter for the search bar 
+        """
         self.model = QtCore.QStringListModel(self.handler.taskList)
         self.completer = QtWidgets.QCompleter(self.model, self)
         self.searchbar.setCompleter(self.completer)
 
     def refreshCompleter(self):
+        """refresh the completer based on current datas
+        """
         self.model.setStringList(self.handler.taskList)
 
     def refresh(self):
