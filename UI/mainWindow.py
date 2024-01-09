@@ -57,4 +57,3 @@ class MainWindow(QtWidgets.QMainWindow):
         self.mainWidget.catSelectorWidget.unSelectAll()
         self.mainWidget.catSelectorWidget.refresh()
         self.mainWidget.catSelectorWidget.searchbar.setText("")
-

@@ -136,4 +136,3 @@ class Project(Entity):
         self._assets = self.getEntities(
             Asset, self._assets, self._assets)
         return self._assets
-

@@ -16,7 +16,8 @@ class Thumbnail(QtWidgets.QWidget):
         self.pixmap = QtGui.QPixmap()
         self.getAndSetImageFromURL(self.URL)
         self.resize(self.pixmap.width(),self.pixmap.height())
-        screenSize = QtGui.QScreen.availableGeometry(QtWidgets.QApplication.primaryScreen())
+        screenSize = QtGui.QScreen.availableGeometry(
+            QtWidgets.QApplication.primaryScreen())
         frmX = (screenSize.width () - self.width ())/2
         frmY = (screenSize.height() - self.height())/2
         self.move(frmX, frmY)
@@ -25,7 +26,8 @@ class Thumbnail(QtWidgets.QWidget):
     def getAndSetImageFromURL(self,imageURL):
         request = requests.get(imageURL)
         self.pixmap.loadFromData(request.content)
-        self.smaller_pixmap = self.pixmap.scaled(50, 50, QtCore.Qt.KeepAspectRatio, QtCore.Qt.FastTransformation)
+        self.smaller_pixmap = self.pixmap.scaled(
+            50, 50, QtCore.Qt.KeepAspectRatio, QtCore.Qt.FastTransformation)
         self.label.setPixmap(self.smaller_pixmap)
         self.label.setScaledContents(True)
         #QApplication.processEvents() # uncoment if executed on loop

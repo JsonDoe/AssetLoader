@@ -150,6 +150,3 @@ class MainWidget(QtWidgets.QFrame):
                 assetName=self.handler.selectedPublish.name)
         else: self.warDiag.BasicWarningDIag(
             title='Error', text='Please select a publish')
-    
-    # def onClickButton(self):
-    #     self.warDiag.BasicWarningDIag()
