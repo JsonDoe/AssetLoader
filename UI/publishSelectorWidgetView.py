@@ -106,7 +106,7 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
             widget.setParent(None)
         
         self.createEntityWidgets(self.listLayout)
-
+        self.searchbar.setText("")
         self.infoView.refresh()
 
     def _onClickButton(self):

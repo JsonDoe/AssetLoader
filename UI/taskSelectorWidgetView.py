@@ -108,6 +108,7 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
             #delete the widget (by removing parent) 
             widget.setParent(None)
         
+        self.searchbar.setText("")
         self.publishView.refresh()
 
         self.createEntityWidgets(self.listLayout)

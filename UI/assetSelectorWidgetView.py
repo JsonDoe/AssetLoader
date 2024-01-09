@@ -114,6 +114,7 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
             #delete the widget (by removing parent) 
             widget.setParent(None)
 
+        self.searchbar.setText("")
         self.taskView.refresh()
 
         self.createEntityWidgets(self.listLayout)
