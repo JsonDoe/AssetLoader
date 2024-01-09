@@ -56,6 +56,7 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
         self.searchbar.setPlaceholderText("Search Category")
         self.searchbar.setMaximumHeight(35)
         self.searchbar.setMinimumHeight(35)
+        self.addCompleter()
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setOrientation(QtCore.Qt.Vertical)
@@ -89,6 +90,11 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
                                 font-size: 12px;
                             }
                             ''')
+
+    def addCompleter(self):
+        self.model = QtCore.QStringListModel(self.handler.categoriesList)
+        self.completer = QtWidgets.QCompleter(self.model, self)
+        self.searchbar.setCompleter(self.completer)
 
     def unSelectAll(self):
         """unselect all the objects

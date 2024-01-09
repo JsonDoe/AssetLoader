@@ -57,6 +57,7 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
         self.searchbar.setPlaceholderText("Search Asset")
         self.searchbar.setMaximumHeight(35)
         self.searchbar.setMinimumHeight(35)
+        self.addCompleter()
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setOrientation(QtCore.Qt.Vertical)
@@ -106,6 +107,16 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedTask = None
         self.handler.selectedPublish = None
 
+    def addCompleter(self):
+        self.model = QtCore.QStringListModel(self.handler.assetList)
+        self.completer = QtWidgets.QCompleter(self.model, self)
+        self.searchbar.setCompleter(self.completer)
+
+    def refreshCompleter(self):
+        if self.handler.selectedCategory == "Sequence":
+            self.model.setStringList(self.handler.shotList)
+        else:
+            self.model.setStringList(self.handler.assetList)
 
     def refresh(self):
         """refresh the diverses widgets from the list
@@ -118,6 +129,7 @@ class AssetSelectorWidgetView(QtWidgets.QFrame):
 
         self.searchbar.setText("")
         self.taskView.refresh()
+        self.refreshCompleter()
 
         self.createEntityWidgets(self.listLayout)
         if self.handler.selectedCategory == "Sequence":

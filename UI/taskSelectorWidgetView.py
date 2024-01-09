@@ -57,6 +57,7 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.searchbar.setPlaceholderText("Search Task")
         self.searchbar.setMaximumHeight(35)
         self.searchbar.setMinimumHeight(35)
+        self.addCompleter()
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setOrientation(QtCore.Qt.Vertical)
@@ -100,6 +101,13 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.handler.selectedTask = None
         self.handler.selectedPublish = None
 
+    def addCompleter(self):
+        self.model = QtCore.QStringListModel(self.handler.taskList)
+        self.completer = QtWidgets.QCompleter(self.model, self)
+        self.searchbar.setCompleter(self.completer)
+
+    def refreshCompleter(self):
+        self.model.setStringList(self.handler.taskList)
 
     def refresh(self):
         """refresh the diverses widgets from the list
@@ -112,6 +120,8 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         
         self.searchbar.setText("")
         self.publishView.refresh()
+        if self.handler.tasks is not None:
+            self.refreshCompleter()
 
         self.createEntityWidgets(self.listLayout)
 

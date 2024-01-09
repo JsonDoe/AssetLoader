@@ -21,10 +21,19 @@ class CategorySelectorWidgetModel(object):
 
         self.selectedPublish:PublishedFile = None
 
+
     @property
     def categories(self):
         return self.currentProject.getAssetsCategories()
     
+    @property
+    def categoriesList(self):
+        catList = []
+        for cat in self.categories:
+            catList.append(cat)
+        catList.append("Sequence")
+        return catList
+
     @property
     def sequences(self):
         return self.currentProject.sequences
@@ -35,9 +44,26 @@ class CategorySelectorWidgetModel(object):
             category=self.selectedCategory)
 
     @property
+    def assetList(self):
+        astList = []
+        for ast in self.assets:
+            astList.append(ast.name)
+        return astList
+
+    @property
     def tasks(self):
         if self.selectedAsset is not None:
             return self.selectedAsset.tasks
+        else:
+            return None
+
+    @property
+    def taskList(self):
+        if self.selectedAsset is not None:
+            tskList = []
+            for tsk in self.tasks:
+                tskList.append(tsk.name)
+            return tskList
         else:
             return None
 
@@ -47,7 +73,24 @@ class CategorySelectorWidgetModel(object):
             return self.selectedTask.publishedFiles
         else:
             return None
-    
+
+    @property
+    def publishList(self):
+        if self.selectedTask is not None:
+            pubList = []
+            for pub in self.tasks:
+                pubList.append(pub.name)
+            return pubList
+        else:
+            return None
+
     @property
     def shots(self):
         return self.currentProject.shots
+
+    @property
+    def shotList(self):
+        shtList = []
+        for sht in self.shots:
+            shtList.append(sht.name)
+        return shtList

@@ -55,6 +55,7 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
         self.searchbar.setPlaceholderText("Search Publish")
         self.searchbar.setMaximumHeight(35)
         self.searchbar.setMinimumHeight(35)
+        self.addCompleter()
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setOrientation(QtCore.Qt.Vertical)
@@ -98,6 +99,13 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
             self.listLayout.itemAt(i).widget().selected = False
         self.handler.selectedPublish = None
 
+    def addCompleter(self):
+        self.model = QtCore.QStringListModel(self.handler.publishList)
+        self.completer = QtWidgets.QCompleter(self.model, self)
+        self.searchbar.setCompleter(self.completer)
+
+    def refreshCompleter(self):
+        self.model.setStringList(self.handler.publishList)
 
     def refresh(self):
         """refresh the diverses widgets from the list
@@ -109,6 +117,8 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
             widget.setParent(None)
         
         self.createEntityWidgets(self.listLayout)
+        if self.handler.publishedFiles is not None:
+            self.refreshCompleter()
         self.searchbar.setText("")
         self.infoView.refresh()
 
