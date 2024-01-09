@@ -80,9 +80,17 @@ class MainWidget(QtWidgets.QFrame):
         self.slcLayout.addWidget(self.astSelectorWidget)
         self.slcLayout.addWidget(self.taskSelectorWidget)
         self.slcLayout.addWidget(self.pubSelectorWidget)
-        self.slcLayout.addWidget(self.infoWidget)
 
-        self.mainLayout.addLayout(self.slcLayout)
+        self.slcContainerWidget = QtWidgets.QWidget()
+        self.slcContainerWidget.setLayout(self.slcLayout)
+
+        self.splitter = QtWidgets.QSplitter()
+        self.splitter.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter.addWidget(self.slcContainerWidget)
+        self.splitter.addWidget(self.infoWidget)
+        self.splitter.setSizes([1, 0])
+
+        self.mainLayout.addWidget(self.splitter)
         self.mainLayout.addLayout(self.btnLayout)
 
         self.setLayout(self.mainLayout)

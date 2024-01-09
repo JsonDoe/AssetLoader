@@ -25,6 +25,7 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
                     color :rgb(255, 255, 255)        
             };
             ''')
+        self.setMinimumWidth(200)
 
 
     def initUI(self):
@@ -55,6 +56,7 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.searchbar.textChanged.connect(self.update_display)
         self.searchbar.setPlaceholderText("Search Task")
         self.searchbar.setMaximumHeight(35)
+        self.searchbar.setMinimumHeight(35)
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setOrientation(QtCore.Qt.Vertical)

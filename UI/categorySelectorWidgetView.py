@@ -25,6 +25,7 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
                     color :rgb(255, 255, 255)        
             };
             ''')
+        self.setMinimumWidth(160)
 
     def initUI(self):
         """creates and organizes the UI
@@ -54,6 +55,7 @@ class CategorySelectorWidgetView(QtWidgets.QFrame):
         self.searchbar.textChanged.connect(self.update_display)
         self.searchbar.setPlaceholderText("Search Category")
         self.searchbar.setMaximumHeight(35)
+        self.searchbar.setMinimumHeight(35)
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setOrientation(QtCore.Qt.Vertical)

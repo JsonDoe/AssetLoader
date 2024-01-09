@@ -24,12 +24,11 @@ class InfoWidgetView(QtWidgets.QWidget):
                     color :rgb(255, 255, 255)        
             };
             ''')
-
+        self.setMinimumWidth(250)
 
     def initUI(self):
         """creates and organizes the UI
         """
-        self.setMinimumWidth(400)
 
         self.mainLayout = QtWidgets.QVBoxLayout()
         self.mainLayout.setAlignment(QtCore.Qt.AlignTop)

@@ -23,6 +23,7 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
                     color :rgb(255, 255, 255)        
             };
             ''')
+        self.setMinimumWidth(200)
 
 
     def initUI(self):
@@ -53,6 +54,7 @@ class PublishSelectorWidgetView(QtWidgets.QFrame):
         self.searchbar.textChanged.connect(self.update_display)
         self.searchbar.setPlaceholderText("Search Publish")
         self.searchbar.setMaximumHeight(35)
+        self.searchbar.setMinimumHeight(35)
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setOrientation(QtCore.Qt.Vertical)
