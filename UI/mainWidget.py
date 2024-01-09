@@ -114,6 +114,7 @@ class MainWidget(QtWidgets.QFrame):
         self.menu.addAction(self.loadAct)
         self.menu.addAction(self.loadWithNamespaceAct)
         self.menu.addAction(self.loadAsRefAct)
+        self.menu.addAction(self.loadMtlxAct)
 
 
     def createActions(self):
@@ -127,6 +128,9 @@ class MainWidget(QtWidgets.QFrame):
 
         self.loadAsRefAct = QtWidgets.QAction("Load as reference", self)
         self.loadAsRefAct.triggered.connect(self._loadAsReference)
+
+        self.loadMtlxAct = QtWidgets.QAction("Load materialX", self)
+        self.loadMtlxAct.triggered.connect(self._loadMtlx)
 
     def _loadBase(self):
         if self.handler.selectedPublish:
@@ -143,11 +147,18 @@ class MainWidget(QtWidgets.QFrame):
         else: self.warDiag.BasicWarningDIag(
             title='Error', text='Please select a publish')
         
-
     def _loadAsReference(self):
         if self.handler.selectedPublish:
             self.loader.loadAssetAsReference(
                 path=self.handler.selectedPublish.path,
                 assetName=self.handler.selectedPublish.name)
+        else: self.warDiag.BasicWarningDIag(
+            title='Error', text='Please select a publish')
+    
+    def _loadMtlx(self):
+        if self.handler.selectedPublish:
+            self.warDiag.BasicWarningDIag(
+            title='Error',
+            text="Can't load .mtlx files with the asset loader yet")
         else: self.warDiag.BasicWarningDIag(
             title='Error', text='Please select a publish')

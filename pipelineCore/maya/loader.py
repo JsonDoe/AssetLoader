@@ -1,9 +1,7 @@
 from PySide2 import QtWidgets
 try: 
     from maya import cmds
-    mayaContext = 1
 except:
-    mayaContext = 0
     pass
 
 
@@ -26,6 +24,13 @@ class Loader(object):
             cmds.AbcImport(path, mode='import')
         else:
             dlg = QtWidgets.QMessageBox()
+            dlg.setStyleSheet('''             
+            * {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }''')
             dlg.setWindowTitle('Error')
             dlg.setText('Wrong file type selected')
             dlg.setStandardButtons(
@@ -60,6 +65,13 @@ class Loader(object):
             return
         else:
             dlg = QtWidgets.QMessageBox()
+            dlg.setStyleSheet('''             
+            * {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }''')
             dlg.setWindowTitle('Error')
             dlg.setText('Wrong file type selected')
             dlg.setStandardButtons(
@@ -93,6 +105,13 @@ class Loader(object):
             return
         else:
             dlg = QtWidgets.QMessageBox()
+            dlg.setStyleSheet('''             
+            * {
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }''')
             dlg.setWindowTitle('Error')
             dlg.setText('Wrong file type selected')
             dlg.setStandardButtons(

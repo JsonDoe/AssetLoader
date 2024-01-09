@@ -20,7 +20,13 @@ class MainWindow(QtWidgets.QMainWindow):
                     font-size: 12px;
                     background-color : rgb(40, 40, 40);
                     color :rgb(255, 255, 255)        
-            };
+            }
+            QMessageBox{
+                   font-family: 'Verdana';
+                    font-size: 12px;
+                    background-color : rgb(40, 40, 40);
+                    color :rgb(255, 255, 255)        
+            }
             ''')
 
     def initUI(self):

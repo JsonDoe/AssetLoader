@@ -78,7 +78,7 @@ class SelectorWidgetModel(object):
     def publishList(self):
         if self.selectedTask is not None:
             pubList = []
-            for pub in self.tasks:
+            for pub in self.publishedFiles:
                 pubList.append(pub.name)
             return pubList
         else:
