@@ -117,9 +117,14 @@ class TaskSelectorWidgetView(QtWidgets.QFrame):
         self.refresh()
 
     def update_display(self, text):
-            for obj in reversed(range(self.listLayout.count())):
-                widget = self.listLayout.itemAt(obj).widget()
-                if text.lower() in widget.nameWidget.text().lower():
-                    widget.show()
-                else:
-                    widget.hide()
+        """update the display depending of the entered 
+
+        :param text: text currently entered in the QLineEdit
+        :type text: str
+        """
+        for obj in reversed(range(self.listLayout.count())):
+            widget = self.listLayout.itemAt(obj).widget()
+            if text.lower() in widget.nameWidget.text().lower():
+                widget.show()
+            else:
+                widget.hide()
