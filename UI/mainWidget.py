@@ -133,6 +133,8 @@ class MainWidget(QtWidgets.QFrame):
         self.loadMtlxAct.triggered.connect(self._loadMtlx)
 
     def _loadBase(self):
+        """load an asset to the maya scene
+        """
         if self.handler.selectedPublish:
             self.loader.loadAsset(
                 path=self.handler.selectedPublish.path)
@@ -140,6 +142,9 @@ class MainWidget(QtWidgets.QFrame):
             title='Error', text='Please select a publish')
     
     def _loadWithNamespace(self):
+        """load an asset to the maya scene placing him in a namespace equal
+        to the publish name
+        """
         if self.handler.selectedPublish:
             self.loader.loadAssetWithNamespace(
                 path=self.handler.selectedPublish.path,
@@ -148,6 +153,8 @@ class MainWidget(QtWidgets.QFrame):
             title='Error', text='Please select a publish')
         
     def _loadAsReference(self):
+        """load an asset as reference to the maya scene
+        """
         if self.handler.selectedPublish:
             self.loader.loadAssetAsReference(
                 path=self.handler.selectedPublish.path,
@@ -156,6 +163,8 @@ class MainWidget(QtWidgets.QFrame):
             title='Error', text='Please select a publish')
     
     def _loadMtlx(self):
+        """load material X to the asset reference (currently not working)
+        """
         if self.handler.selectedPublish:
             self.warDiag.BasicWarningDIag(
             title='Error',
