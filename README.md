@@ -1,2 +1,2 @@
 # AssetLoader
-AssetLoader multiplatform
+Basic Asset Loader for Maya
