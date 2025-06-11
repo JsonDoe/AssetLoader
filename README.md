@@ -44,10 +44,6 @@ AssetLoader/
 - Python 3 (Maya's embedded interpreter)
 - ShotGrid API (`shotgun_api3`) if ShotGrid integration is used
 
-## ✅ To Do
-
-See `TODO.md` for a breakdown of planned features, refactoring ideas, and known limitations.
-
 ## 🗒️ Notes
 
 This loader is intentionally minimal. It’s built to demonstrate:
