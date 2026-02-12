@@ -4,7 +4,7 @@ A basic, object-oriented asset loader for Autodesk Maya (2024), with ShotGrid in
 
 This tool is my first step into building production-facing pipeline utilities as a Pipeline TD. It focuses on loading assets via Maya ASCII (`.ma`) or Alembic (`.abc`) files, with support for referencing where needed. It’s intended as a proof-of-concept for future iterations of a more complete pipeline toolset.
 
-## 🔧 Features
+## Features
 
 - Loads assets from a structured project directory.
 - Supports both `.ma` and `.abc` file formats.
@@ -12,7 +12,7 @@ This tool is my first step into building production-facing pipeline utilities as
 - Integrates with ShotGrid for asset information retrieval.
 - Clean object-oriented structure for extensibility and clarity.
 
-## 💡 Usage
+## Usage
 
 The entry point is `main.py`. Run it within a Maya Python environment:
 
@@ -25,7 +25,7 @@ Before launching, make sure Maya is configured to run custom Python scripts and 
 
 > Note: `maya.cmds` and `shotgun_api3` are required. Ensure they are accessible in your Python environment.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 AssetLoader/
@@ -38,13 +38,13 @@ AssetLoader/
 └── TODO.md             # Development roadmap
 ```
 
-## ⚙️ Dependencies
+## Dependencies
 
 - Autodesk Maya 2024
 - Python 3 (Maya's embedded interpreter)
 - ShotGrid API (`shotgun_api3`) if ShotGrid integration is used
 
-## 🗒️ Notes
+## Notes
 
 This loader is intentionally minimal. It’s built to demonstrate:
 
@@ -52,6 +52,3 @@ This loader is intentionally minimal. It’s built to demonstrate:
 - My familiarity with Maya’s Python API and ShotGrid integration
 - An early, honest iteration in building production tools from scratch
 
-## 📬 Contact
-
-If you're a fellow TD, recruiter, or pipeline developer interested in collaboration or feedback, feel free to reach out via GitHub or LinkedIn.
